@@ -9,21 +9,21 @@
                     <ul class="nav flex-column text-uppercase">
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Newsy</a>
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>news">Newsy</a>
                             
                             <ul class="et-footer-submenu-link">
-                                <li class="nav-item"><a class="nav-link" href="#" >Newsy</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" >Artykuły</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" >Wywiady</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#" >Felietony</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL; ?>news/newsy" >Newsy</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL; ?>news/artykuly" >Artykuły</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL; ?>news/wywiady" >Wywiady</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL; ?>news/felietony" >Felietony</a></li>
                             </ul>
                             
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Memy</a>
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>mem">Memy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Video</a>
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>video">Video</a>
                         </li>
 
                     </ul>
@@ -36,16 +36,16 @@
                     <ul class="nav flex-column text-uppercase">
                        
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Redakcja</a>       
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>redakcja">Redakcja</a>       
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reklama</a>
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>reklama">Reklama</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Polityka prywatności</a>
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>polityka-prywatnosci">Polityka prywatności</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Kontakt</a>
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>kontakt">Kontakt</a>
                         </li>
 
                     </ul>
@@ -56,10 +56,10 @@
                     
                     <!-- Socials -->
                     <div class="et-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="far fa-envelope"></i></a>
+                        <a href="<?php echo $def['fb_link']; ?>"><i class="fab fa-facebook-f"></i></a>
+                        <a href="<?php echo $def['titter_link']; ?>"><i class="fab fa-twitter"></i></a>
+                        <a href="<?php echo $def['insta_link']; ?>"><i class="fab fa-instagram"></i></a>
+                        <a href="<?php echo $def['mail_link']; ?>"><i class="far fa-envelope"></i></a>
                     </div>
                     
                     <!-- Copy -->

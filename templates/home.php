@@ -1,8 +1,17 @@
   <?php
-//    $data = 
+
 $data = new DATA;
-$home_news = $data->get_list( 'news', 7 );
-printuj( $home_news );
+$front = new FRONT;
+$card = new CARD;
+$ads = new ADS;
+
+$last_news = '';
+$last_news_felietony = '';
+$last_news_wywiady = '';
+
+$home_news = $data->get_list( 'news', 17 );
+$home_mem = $data->get_list( 'mem', 9 );
+$home_video = $data->get_list( 'video', 7 );
 
 
 /*
@@ -10,13 +19,6 @@ printuj( $home_news );
     9 mem
     7 video
 */
-
-
-
-
-
-
-
 
   ?>
 
@@ -29,86 +31,32 @@ printuj( $home_news );
                 <!-- Single big card column -->
                 <div class="col-md-6">
                     
-                    <!-- Big card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                            <p class="card-text et-card-date">
-                               15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_news[0] ); ?>
                     
                 </div>
                 
                 <!-- Small cards column 1 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->                 
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">MU przechwyci Alexisa? Chilijczyk bliski przenosin na Old Trafford</h3>
-                            <p class="card-text et-card-date">
-                               14 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">4</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Felietony</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_news[1] ); ?>
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">MŚ 2018: Senegal zagra towarzysko ze Szkocją</h3>
-                            <p class="card-text et-card-date">
-                               11 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">0</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-videos" href="#">Video</a>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_video[0] ); ?>
                     
                 </div>
                 
                 <!-- Small cards column 2 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->               
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Ligue 1: sędzia tłumaczy się ze swojego zachowania</h3>
-                            <p class="card-text et-card-date">
-                               10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">12</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-memes" href="#">Memy</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_mem[0] ); ?>
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                               10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_news[2] ); ?>
                     
                 </div>
                 
+                
                 <!-- Vertical ad -->
-                <img class="mx-auto et-ad-vertical" src="img/728x90.png" alt="">
+                <?php $ads->wide(); ?>
+                
                 
             </div>
         </div>                  
@@ -126,174 +74,46 @@ printuj( $home_news );
                 
                 <!-- Small cards column 1 -->
                 <div class="col-md-3">
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->     
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
 
+                    <?php $card->show( $home_news[0] ); ?>
+                    <?php $card->show( $home_news[1] ); ?>
+                    <?php $card->show( $home_news[2] ); ?>
+                    
                 </div>
                 
                 <!-- Small cards column 2 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card --> 
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div> 
+                    <?php $card->show( $home_news[3] ); ?>
+                    <?php $card->show( $home_news[4] ); ?>
+                    <?php $card->show( $home_news[5] ); ?>
                     
                 </div>               
                     
                 <!-- Small cards column 3 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card --> 
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_news[6] ); ?>
+                    <?php $card->show( $home_news[7] ); ?>
+                    <?php $card->show( $home_news[8] ); ?>
                     
                 </div>              
                     
                 <!-- Small cards column 4 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="card-link text-lowercase text-white et-card-category-news" href="#">Wywiady</a>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_news[9] ); ?>
+                    <?php $card->show( $home_news[10] ); ?>
                     
                     <!-- Square ad -->                       
                     <div class="card mb-4 et-card-ad">
-                        <img class="card-img" src="img/300x250.png" alt="">
+                        <?php $ads->square(); ?>
                     </div>
 
                 </div>
                 
                 <!-- Button see more -->
-                <a class="btn text-uppercase et-more-btn et-more-news-btn" href="#" role="button">Zobacz więcej</a>
+                <a class="btn text-uppercase et-more-btn et-more-news-btn" href="<?php echo $front->get_link_archive_news(); ?>" role="button">Zobacz więcej</a>
             
             </div>           
             
@@ -313,34 +133,15 @@ printuj( $home_news );
                 <!-- Single big card column 1 -->
                 <div class="col-md-6">
                     
-                    <!-- Big card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                            <p class="card-text et-card-date">
-                               15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    
+                    <?php $card->show( $home_mem[0] ); ?>
                     
                 </div>
                 
                  <!-- Single big card column 2 -->
                 <div class="col-md-6">
                     
-                    <!-- Big card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                            <p class="card-text et-card-date">
-                               15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_mem[1] ); ?>
                     
                 </div>
             
@@ -351,114 +152,41 @@ printuj( $home_news );
                 <!-- Small cards column 1 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_mem[2] ); ?>
+                    <?php $card->show( $home_mem[3] ); ?>
 
                 </div>
                 
                 <!-- Small cards column 2 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_mem[4] ); ?>
+                    <?php $card->show( $home_mem[5] ); ?>
                     
                 </div>               
                     
                 <!-- Small cards column 3 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_mem[6] ); ?>
+                    <?php $card->show( $home_mem[7] ); ?>
                     
                 </div>              
                     
                 <!-- Small cards column 4 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_mem[8] ); ?>
                     
                     <!-- Square ad -->                       
                     <div class="card mb-4 et-card-ad">
-                        <img class="card-img" src="img/300x250.png" alt="">
+                        <?php $ads->square(); ?>
                     </div>
 
                 </div>
                 
                 <!-- Button see more -->
-                <a class="btn text-uppercase et-more-btn et-more-memes-btn" href="#" role="button">Zobacz więcej</a>
+                <a class="btn text-uppercase et-more-btn et-more-memes-btn" href="<?php echo $front->get_link_archive_mem(); ?>" role="button">Zobacz więcej</a>
             
             </div>           
             
@@ -478,121 +206,41 @@ printuj( $home_news );
                 <!-- Small cards column 1 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_video[0] ); ?>
+                    <?php $card->show( $home_video[1] ); ?>
 
                 </div>
                 
                 <!-- Small cards column 2 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                    <?php $card->show( $home_video[2] ); ?>
+                    <?php $card->show( $home_video[3] ); ?>
                     
                 </div>               
                     
                 <!-- Small cards column 3 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
-                    
+                    <?php $card->show( $home_video[4] ); ?>
+                    <?php $card->show( $home_video[5] ); ?>
+                     
                 </div>              
                     
                 <!-- Small cards column 4 -->
                 <div class="col-md-3">
                     
-                    <!-- Small card -->
-                    <div class="card bg-dark text-white et-card">
-                        <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                        <div class="card-img-overlay">
-                            <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                            <p class="card-text et-card-date">
-                                10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                            </p>
-                            <i class="far fa-play-circle et-card-video-icon"></i>
-                            <a class="et-card-link" href="#" ></a>
-                        </div>
-                    </div>
+                     <?php $card->show( $home_video[6] ); ?>
                     
                     <!-- Square ad -->                       
                     <div class="card mb-4 et-card-ad">
-                        <img class="card-img" src="img/300x250.png" alt="">
+                        <?php $ads->square(); ?>
                     </div>
 
                 </div>
                 
                 <!-- Button see more -->
-                <a class="btn text-uppercase et-more-btn et-more-videos-btn" href="#" role="button">Zobacz więcej</a>
+                <a class="btn text-uppercase et-more-btn et-more-videos-btn" href="<?php echo $front->get_link_archive_video(); ?>" role="button">Zobacz więcej</a>
             
             </div>           
             

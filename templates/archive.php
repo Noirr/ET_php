@@ -1,6 +1,31 @@
+<?php 
+
+    $data = new DATA;
+    $front = new FRONT;
+    $card = new CARD;
+    $ads = new ADS;
+
+    $type = $_GET["type"];
+    $page = 1;
+    if( !empty($_GET["page"]) )
+    {
+        $page = $_GET["page"];
+    }
+    $archive = new ARCHIVE( $_GET["type"], $page );
+
+    //printuj( $archive );
+ 
+
+
+?> 
+ 
+ 
+ 
+ 
+ 
  <!-- Page header -->
  <div class="container px-xl-0">
-        <h1 class="text-uppercase et-section-title">Newsy</h1>
+        <h1 class="text-uppercase et-section-title"><?php echo $archive->title; ?></h1>
     </div>
     
     <!-- ####### Content ####### -->
@@ -12,85 +37,30 @@
                                
                 <!-- Facebook -->                       
                 <div class="card mb-4 et-card-ad">
-                    <img class="card-img" src="img/fb.png" alt="">
+                    <?php  $ads->fb(); ?>
                 </div>
                    
                 <!-- Square ad -->                       
                 <div class="card mb-4 et-card-ad">
-                    <img class="card-img" src="img/300x250.png" alt="">
+                    <?php  $ads->square(); ?>
                 </div>
                 
                 <!-- Sidebar latest videos header -->
-                <h2 class="text-uppercase et-sidebar-title">Najnowsze video</h2>
+                <h2 class="text-uppercase et-sidebar-title"><?php echo $archive->left_title; ?></h2>
                 
-                <!-- Sidebar latest videos small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <i class="far fa-play-circle et-card-video-icon"></i>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
+                <?php $card->show( $archive->left_articles[0] ); ?>
                 
-                <!-- Sidebar latest videos small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <i class="far fa-play-circle et-card-video-icon"></i>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div> 
+                <?php $card->show( $archive->left_articles[1] ); ?>
                    
-                <!-- Sidebar latest videos small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <i class="far fa-play-circle et-card-video-icon"></i>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
+                <?php $card->show( $archive->left_articles[2] ); ?>
                   
-                <!-- Sidebar latest videos small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <i class="far fa-play-circle et-card-video-icon"></i>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
+                <?php $card->show( $archive->left_articles[3] ); ?>
                   
-                <!-- Sidebar latest videos small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <i class="far fa-play-circle et-card-video-icon"></i>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
+                <?php $card->show( $archive->left_articles[4] ); ?>
                    
                 <!-- Horizontal ad -->                       
                 <div class="card mb-4 et-card-ad">
-                    <img class="card-img" src="img/300x600.png" alt="">
+                    <?php  $ads->long(); ?>
                 </div>
                     
             </div>
@@ -99,240 +69,52 @@
             <!-- ####### News list ####### -->
             <div class="col-md-6">
                
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
+                <?php $card->show( $archive->main_articles[0] ); ?>
+                <?php $card->show( $archive->main_articles[1] ); ?>
+                <?php $card->show( $archive->main_articles[2] ); ?>
+                <?php $card->show( $archive->main_articles[3] ); ?>
+                <?php $card->show( $archive->main_articles[4] ); ?>
+                <?php $card->show( $archive->main_articles[5] ); ?>
+                <?php $card->show( $archive->main_articles[6] ); ?>
+                <?php $card->show( $archive->main_articles[7] ); ?>
                
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
+
+                <?php $archive->pagination(); ?>
                
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
-               
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
-               
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
-               
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
-               
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
-               
-               <!-- Latest news big card -->
-               <div class="card bg-dark text-white et-card">
-                   <img class="card-img" src="img/news_big.jpg" alt="Zdjęcie">
-                   <div class="card-img-overlay">
-                       <h3 class="card-title et-card-title">Superpuchar UEFA: dziewięć miast ubiega się o mecz w 2020 roku</h3>
-                       <p class="card-text et-card-date">
-                           15 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">2</span>
-                       </p>
-                       <a class="card-link text-lowercase text-white et-card-category-news" href="#">Newsy</a>
-                       <a class="et-card-link" href="#" ></a>
-                   </div>
-               </div>
-               
-               <!-- Pagination -->
-               <nav aria-label="News pages">
-                    <ul class="pagination et-pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link et-pagination-link" href="#" aria-label="Poprzedni">
-                                <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
-                                <span class="sr-only">Poprzedni</span>
-                            </a>
-                        </li>
-                        <li class="page-item active">
-                            <span class="page-link et-pagination-link et-pagination-active-link">
-                                1<span class="sr-only">(aktywny)</span>
-                            </span>
-                        </li>
-                        <li class="page-item"><a class="page-link et-pagination-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link et-pagination-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link et-pagination-link" href="#" aria-label="Następny">
-                                <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span>
-                                <span class="sr-only">Następny</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+
                 
             </div>
             <!-- ####### End of News list ####### -->
                 
             <!-- ####### Right sidebar ####### -->
             <div class="col-md-3">
-
-                <!-- Sidebar choose category header -->
-                <h2 class="text-uppercase mt-0 et-sidebar-title">Wybierz kategorię</h2> 
-                                               
-                <!-- Choose category -->
-                <ul class="nav text-uppercase et-categories-menu">
-                       
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Newsy</a>       
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Artykuły</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Wywiady</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Felietony</a>
-                    </li>
-
-                </ul>
+       
+                <?php echo $archive->submenu; ?>
                                                
                 <!-- Horizontal ad -->                       
                 <div class="card mb-4 et-card-ad">
-                    <img class="card-img" src="img/300x600.png" alt="">
+                    <?php  $ads->long(); ?>
                 </div>
                                               
                 <!-- Sidebar latest memes header -->
-                <h2 class="text-uppercase et-sidebar-title">Najnowsze memy</h2>
+                <h2 class="text-uppercase et-sidebar-title"><?php echo $archive->right_title; ?></h2>
                                                
-                <!-- Latest memes small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
-                                               
-                <!-- Latest memes small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
-                                               
-                <!-- Latest memes small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
-                                               
-                <!-- Latest memes small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
-                                               
-                <!-- Latest memes small card -->
-                <div class="card bg-dark text-white et-card">
-                    <img class="card-img" src="img/news_small.jpg" alt="Zdjęcie">
-                    <div class="card-img-overlay">
-                        <h3 class="card-title et-card-small-title">Arek Milik po powrocie</h3>
-                        <p class="card-text et-card-date">
-                            10 stycznia 2018 <i class="fas fa-comment et-card-comments"></i><span class="et-card-comments-number">1</span>
-                        </p>
-                        <a class="et-card-link" href="#" ></a>
-                    </div>
-                </div>
+                <?php $card->show( $archive->right_articles[0] ); ?>
+                <?php $card->show( $archive->right_articles[1] ); ?>
+                <?php $card->show( $archive->right_articles[2] ); ?>
+                <?php $card->show( $archive->right_articles[3] ); ?>
+                <?php $card->show( $archive->right_articles[4] ); ?>
                                                
                 <!-- Square ad -->                       
                 <div class="card mb-4 et-card-ad">
-                    <img class="card-img" src="img/300x250.png" alt="">
+                    <?php  $ads->square(); ?>
                 </div>               
                                                 
             </div>
             <!-- ####### End of Right sidebar ####### -->
                
             <!-- Vertical ad -->
-            <img class="mx-auto et-ad-vertical" src="img/728x90.png" alt="">
+            <?php  $ads->wide(); ?>
                 
         </div>
     </div>

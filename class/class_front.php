@@ -9,47 +9,38 @@ class FRONT
     var $n_page = NULL;
     var $page_slug = NULL;
 
-    public function show_single_big()
+    public function et_single_post_category( $type )
     {
-
+       
+        if( $type == "news" )
+        {
+            echo '<a class="text-lowercase et-single-post-category" href="#">Newsy</a>';
+        }
+        else if( $type == "mem" )
+        {
+            echo '<a class="text-lowercase et-single-post-category" href="#">Memy</a>';
+        }
+        else if( $type == "video" )
+        {
+            echo '<a class="text-lowercase et-single-post-category" href="#">Video</a>';
+        }
     }
-    public function show_single_small()
+
+    public function et_single_post_tags( $tags )
     {
-
+        //printuj( $tags );
+        echo '<ul class="nav et-single-post-tags">';
+        foreach( $tags as $tag )
+        {
+            echo '<li class="nav-item"><a class="nav-link" href="#">';
+            echo $tag['name'];
+            echo '</a></li>';
+        }
+        echo '</ul>';
     }
-    public function show_latest_block( $type )
-    {
-        // mem / video / news
-    }
-    public function show_single_page( $type, $id )
-    {
-        
-    }
-
-
-
-    public function header_logo()
-    {
-
-    }
+  
 
     /* GET SOCIAL LINKS */
-    public function get_link_facebook()
-    {
-        return "#";
-    }
-    public function get_link_instagram()
-    {
-        return "#";        
-    }
-    public function get_link_twitter()
-    {
-        return "#";       
-    }
-    public function get_link_mail()
-    {
-        return "#";        
-    }
     public function get_link_archive_mem()
     {
         return SITE_URL.'?type=mem';
@@ -67,28 +58,26 @@ class FRONT
 
 
     /* SET & REQUIRE TEMPLATE  */
-    public function single_page( $page ){
+    public function single_page( $id ){
+        $this->template = 'single';
+        $this->id = $id;
+        require_once( 'templates/single.php' );
+    }
+    public function static_page( $page ){
         $this->template = 'page';
         $this->page_slug = $page;
         require_once( 'templates/page.php' );
     }
-    public function type_page( $type ){
+    public function archive_page( $type ){
         $this->type = $type;
-        if( !empty($_GET['id']) )
-		{
-            $this->template = 'single';
-            $this->id = $_GET['id'];
-			require_once( 'templates/single.php' );
-		}else{
-            $this->template = 'archive';
-            if( !empty($_GET['page']) )
-            {
-                $this->n_page = $_GET['page'];
-            }else{
-                $this->n_page = 1;
-            }
-			require_once( 'templates/archive.php' );
-		}
+        $this->template = 'archive';
+        if( !empty($_GET['page']) )
+        {
+            $this->n_page = $_GET['page'];
+        }else{
+            $this->n_page = 1;
+        }
+        require_once( 'templates/archive.php' );
     }
     public function home_page(){
         require_once( 'templates/home.php' );
